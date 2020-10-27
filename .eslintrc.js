@@ -4,30 +4,42 @@ module.exports = {
     es2021: true,
     node: true,
     'react-native/react-native': true,
+    'jest/globals': true,
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'eslint-config-prettier'],
+  extends: [
+    'plugin:react/recommended',
+    'plugin:jest/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'airbnb',
+    'eslint-config-prettier',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 12,
+    ecmaVersion: 11,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'react-native'],
+  plugins: ['react', '@typescript-eslint', 'react-native', 'jest'],
   rules: {
-    'no-use-before-define': 'warn',
-    'react/jsx-filename-extension': 'warn',
-    'import/no-unresolved': 'warn',
-    'import/extensions': 'warn',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+    'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts', '.js'] }],
     'react/no-unescaped-entities': 'warn',
     'react/jsx-props-no-spreading': 'warn',
     'react/prop-types': 'off',
-    'global-require': 'warn',
-    'no-undef': 'warn',
-    'import/no-extraneous-dependencies': 'warn',
-    'react/destructuring-assignment': 'warn',
-    'import/prefer-default-export': 'warn',
+    'no-use-before-define': 'off',
+    'no-unused-expressions': 'warn',
+    'global-require': 'off',
   },
   overrides: [
     {
@@ -37,4 +49,14 @@ module.exports = {
       },
     },
   ],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+    jest: {
+      version: 36,
+    },
+  },
 };

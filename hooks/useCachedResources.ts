@@ -19,7 +19,7 @@ export default function useCachedResources() {
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
-        console.warn(e);
+        throw new Error(e);
       } finally {
         setLoadingComplete(true);
         SplashScreen.hideAsync();
