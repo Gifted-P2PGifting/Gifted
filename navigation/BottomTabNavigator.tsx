@@ -17,6 +17,7 @@ import {
   BottomTabParamList,
   HomeTabParamList,
   FeedTabParamList,
+  // ViewCampaignParamList
 } from '../types';
 
 // You can explore the built-in icon families and icons on the web at:
