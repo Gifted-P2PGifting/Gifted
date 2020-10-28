@@ -24,13 +24,5 @@ export default [
         key: 'third',
         color: '#999',
     },
-    {
-        type: 'Humlan B',
-        imageUri: require('../assets/urbanears_mint.png'),
-        heading: 'From Sweden',
-        description:
-            'The “Plattan” in Plattan headphones is Swedish for “the slab.”',
-        key: 'fourth',
-        color: '#a1e3a1',
-    },
+
 ];
