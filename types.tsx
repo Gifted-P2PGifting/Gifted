@@ -19,3 +19,7 @@ export type FeedTabParamList = {
   CampaignScreen: undefined;
   ItemScreen: undefined;
 };
+
+export type LoginScreenParamList = {
+  LoginScreen: undefined;
+};
