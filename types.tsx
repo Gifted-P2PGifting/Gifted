@@ -4,17 +4,20 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  LoginScreen: undefined;
-  TabOne: undefined;
-  TabTwo: undefined;
+  Home: undefined;
+  Feed: undefined;
 };
 
-export type TabOneParamList = {
-  TabOneScreen: undefined;
+export type HomeTabParamList = {
+  HomeScreen: undefined;
+  HistoryScreen: undefined;
+  SettingsScreen: undefined;
 };
 
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+export type FeedTabParamList = {
+  FeedScreen: undefined;
+  CampaignScreen: undefined;
+  ItemScreen: undefined;
 };
 
 export type LoginScreenParamList = {
