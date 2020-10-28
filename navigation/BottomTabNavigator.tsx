@@ -5,14 +5,17 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import CampaignsScreen from '../screens/Campaigns';
+import HomeScreen from '../screens/HomeScreen';
+import HistoryScreen from '../screens/HistoryScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+import FeedScreen from '../screens/FeedScreen';
+import CampaignScreen from '../screens/CampaignScreen';
+import ItemScreen from '../screens/ItemScreen';
+
 import {
   BottomTabParamList,
-  TabOneParamList,
-  TabTwoParamList,
-  TabCampaignsList,
+  HomeTabParamList,
+  FeedTabParamList,
 } from '../types';
 
 // You can explore the built-in icon families and icons on the web at:
@@ -30,45 +33,51 @@ function TabBarIcon({ name, color }: { name: string; color: string }) {
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const HomeTabStack = createStackNavigator<HomeTabParamList>();
 
-function TabOneNavigator() {
+function HomeTabNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+    <HomeTabStack.Navigator>
+      <HomeTabStack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{ headerTitle: 'Home' }}
       />
-    </TabOneStack.Navigator>
+      <HomeTabStack.Screen
+        name="HistoryScreen"
+        component={HistoryScreen}
+        options={{ headerTitle: 'History' }}
+      />
+      <HomeTabStack.Screen
+        name="SettingsScreen"
+        component={SettingsScreen}
+        options={{ headerTitle: 'Settings' }}
+      />
+    </HomeTabStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const FeedTabStack = createStackNavigator<FeedTabParamList>();
 
-function TabTwoNavigator() {
+function FeedTabNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <FeedTabStack.Navigator>
+      <FeedTabStack.Screen
+        name="FeedScreen"
+        component={FeedScreen}
+        options={{ headerTitle: 'Feed' }}
       />
-    </TabTwoStack.Navigator>
-  );
-}
-
-const CampaignsTabStack = createStackNavigator<TabCampaignsList>();
-
-function CampaignsTabNavigator() {
-  return (
-    <CampaignsTabStack.Navigator>
-      <CampaignsTabStack.Screen
-        name="CampaignsTabScreen"
-        component={CampaignsScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+      <FeedTabStack.Screen
+        name="CampaignScreen"
+        component={CampaignScreen}
+        options={{ headerTitle: 'Campaign' }}
       />
-    </CampaignsTabStack.Navigator>
+      <FeedTabStack.Screen
+        name="ItemScreen"
+        component={ItemScreen}
+        options={{ headerTitle: 'Item' }}
+      />
+    </FeedTabStack.Navigator>
   );
 }
 
@@ -79,12 +88,12 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Home"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
     >
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+        name="Home"
+        component={HomeTabNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="ios-code" color={color} />
@@ -92,17 +101,8 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="ios-code" color={color} />
-          ),
-        }}
-      />
-      <BottomTab.Screen
-        name="CampaignsTab"
-        component={CampaignsTabNavigator}
+        name="Feed"
+        component={FeedTabNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="ios-code" color={color} />
