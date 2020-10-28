@@ -253,7 +253,7 @@ export default function ViewCampaign() {
             />
             <Image
                 style={styles.logo}
-            // source={require('./assets/ue_black_logo.png')}
+                source={require('../assets/ue_black_logo.png')}
             />
             <Pagination scrollX={scrollX} />
             <Ticker scrollX={scrollX} />
