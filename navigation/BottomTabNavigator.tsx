@@ -7,7 +7,8 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import ViewCampaign from '../screens/ViewCampaign';
+import { BottomTabParamList, TabOneParamList, TabTwoParamList, ViewCampaignParamList } from '../types';
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
@@ -49,6 +50,19 @@ function TabTwoNavigator() {
         options={{ headerTitle: 'Tab Two Title' }}
       />
     </TabTwoStack.Navigator>
+  )
+};
+const ViewCampaignStack = createStackNavigator<ViewCampaignParamList>();
+
+function ViewCampaignNavigator() {
+  return (
+    <ViewCampaignStack.Navigator>
+      <ViewCampaignStack.Screen
+        name="ViewCampaignScreen"
+        component={ViewCampaign}
+        options={{ headerTitle: 'View Campaign Title' }}
+      />
+    </ViewCampaignStack.Navigator>
   );
 }
 
@@ -74,6 +88,15 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="TabTwo"
         component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-code" color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="ViewCampaign"
+        component={ViewCampaignNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="ios-code" color={color} />
