@@ -20,7 +20,8 @@ const CIRCLE_SIZE = width * 0.6;
 const Circle = ({ scrollX }) => {
     return (
         <View style={[StyleSheet.absoluteFillObject, styles.circleContainer]}>
-            {data.map(({ color }, index) => {
+            {data.map(({ color, key }, index) => {
+                //set key to ID of item later when connecting with data
                 const inputRange = [
                     (index - 0.55) * width,
                     index * width,
@@ -37,7 +38,7 @@ const Circle = ({ scrollX }) => {
                 });
                 return (
                     <Animated.View
-                        key={index}
+                        key={key}
                         style={[
                             styles.circle,
                             {
@@ -62,9 +63,9 @@ const Ticker = ({ scrollX }) => {
     return (
         <View style={styles.tickerContainer}>
             <Animated.View style={{ transform: [{ translateY }] }}>
-                {data.map(({ type }, index) => {
+                {data.map(({ type, key }, index) => {
                     return (
-                        <Text key={index} style={styles.tickerText}>
+                        <Text key={key} style={styles.tickerText}>
                             {type}
                         </Text>
                     );
@@ -163,8 +164,12 @@ const Pagination = ({ scrollX }) => {
                 return (
                     <View key={item.key} style={styles.paginationDotContainer}>
                         <View
-                            style={[styles.paginationDot, { backgroundColor: item.color }]}
+                            style={{
+                                ...styles.paginationDot,
 
+                                backgroundColor: item.color
+                                ,
+                            }}
                         />
                     </View>
                 );
