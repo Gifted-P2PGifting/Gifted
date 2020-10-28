@@ -96,31 +96,55 @@ const Item = ({ imageUri, heading, description, index, scrollX }) => {
     <View style={styles.itemStyle}>
       <Animated.Image
         source={imageUri}
-        style={{
-          ...styles.imageStyle,
-          transform: [{ scale }],
-        }}
+        // style={{
+        //   ...styles.imageStyle,
+        //   transform: [{ scale }],
+        // }}
+        style={[
+          styles.imageStyle,
+          {
+            transform: [{ scale }],
+          },
+        ]}
       />
       <View style={styles.textContainer}>
         <Animated.Text
-          style={{
-            ...styles.heading,
-            opacity,
-            transform: [{ translateX: translateXHeading }],
-          }}
+          // style={{
+          //   ...styles.heading,
+          //   opacity,
+          //   transform: [{ translateX: translateXHeading }],
+          // }}
+          style={[
+            styles.heading,
+            {
+              opacity,
+              transform: [{ translateX: translateXHeading }],
+            },
+          ]}
         >
           {heading}
         </Animated.Text>
         <Animated.Text
-          style={{
-            ...styles.description,
-            opacity,
-            transform: [
-              {
-                translateX: translateXDescription,
-              },
-            ],
-          }}
+          // style={{
+          //   ...styles.description,
+          //   opacity,
+          //   transform: [
+          //     {
+          //       translateX: translateXDescription,
+          //     },
+          //   ],
+          // }}
+          style={[
+            styles.description,
+            {
+              opacity,
+              transform: [
+                {
+                  translateX: translateXDescription,
+                },
+              ],
+            },
+          ]}
         >
           {description}
         </Animated.Text>

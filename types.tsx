@@ -6,7 +6,7 @@ export type RootStackParamList = {
 export type BottomTabParamList = {
   Home: undefined;
   Feed: undefined;
-  ViewCampaign: undefined;
+  View: undefined;
 };
 
 export type HomeTabParamList = {
@@ -23,4 +23,5 @@ export type FeedTabParamList = {
 
 export type ViewCampaignParamList = {
   ViewCampaignScreen: undefined;
+  ViewCampaign: undefined;
 };

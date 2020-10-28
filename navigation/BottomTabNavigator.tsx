@@ -11,13 +11,13 @@ import SettingsScreen from '../screens/SettingsScreen';
 import FeedScreen from '../screens/FeedScreen';
 import CampaignScreen from '../screens/CampaignScreen';
 import ItemScreen from '../screens/ItemScreen';
-// import ViewCampaign from '../screens/ViewCampaign'
+import ViewCampaign from '../screens/ViewCampaign';
 
 import {
   BottomTabParamList,
   HomeTabParamList,
   FeedTabParamList,
-  // ViewCampaignParamList
+  ViewCampaignParamList,
 } from '../types';
 
 // You can explore the built-in icon families and icons on the web at:
@@ -83,6 +83,20 @@ function FeedTabNavigator() {
   );
 }
 
+const ViewCampaignStack = createStackNavigator<ViewCampaignParamList>();
+
+function ViewCampaignNavigator() {
+  return (
+    <ViewCampaignStack.Navigator>
+      <ViewCampaignStack.Screen
+        name="ViewCampaign"
+        component={ViewCampaign}
+        options={{ headerTitle: 'View' }}
+      />
+    </ViewCampaignStack.Navigator>
+  );
+}
+
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
@@ -105,6 +119,15 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="Feed"
         component={FeedTabNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-code" color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="View"
+        component={ViewCampaignNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="ios-code" color={color} />
