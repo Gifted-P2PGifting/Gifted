@@ -2,8 +2,12 @@ import * as React from 'react';
 
 import { Text, TextProps } from './Themed';
 
-export function MonoText(props: TextProps) {
+export default function MonoText({ lightColor, darkColor, style }: TextProps) {
   return (
-    <Text {...props} style={[props.style, { fontFamily: 'space-mono' }]} />
+    <Text
+      lightColor={lightColor}
+      darkColor={darkColor}
+      style={[style, { fontFamily: 'space-mono' }]}
+    />
   );
 }
