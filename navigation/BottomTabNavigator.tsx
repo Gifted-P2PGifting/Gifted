@@ -11,7 +11,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 import FeedScreen from '../screens/FeedScreen';
 import CampaignScreen from '../screens/CampaignScreen';
 import ItemScreen from '../screens/ItemScreen';
-import ViewCampaign from '../screens/ViewCampaign'
+// import ViewCampaign from '../screens/ViewCampaign'
 
 import {
   BottomTabParamList,
@@ -110,7 +110,6 @@ export default function BottomTabNavigator() {
           ),
         }}
       />
-
     </BottomTab.Navigator>
   );
 }
