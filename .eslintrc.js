@@ -39,6 +39,8 @@ module.exports = {
     'no-use-before-define': 'off',
     'no-unused-expressions': 'warn',
     'global-require': 'off',
+    'spaced-comment': [2, 'always'],
+    '@typescript-eslint/no-var-requires': 'off',
   },
   overrides: [
     {

@@ -164,6 +164,7 @@ const Pagination = ({ scrollX }) => {
                     <View key={item.key} style={styles.paginationDotContainer}>
                         <View
                             style={[styles.paginationDot, { backgroundColor: item.color }]}
+
                         />
                     </View>
                 );
