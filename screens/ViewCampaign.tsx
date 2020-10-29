@@ -134,14 +134,20 @@ const Item = ({ imageUri, recipientDesc, story, index, scrollX, link }) => {
             },
           ]}
         >
-          {story}
+          {`${story}  `}
+          <Text
+            style={{ color: 'blue' }}
+            onPress={() => Linking.openURL(`${link}`)}
+          >
+            Click here to donate gift!
+          </Text>
         </Animated.Text>
-        <Text
-          style={{ color: 'blue' }}
+        {/* <Text
+          style={styles.linkdescription}
           onPress={() => Linking.openURL(`${link}`)}
         >
           Click here to donate gift!
-        </Text>
+        </Text> */}
       </View>
     </View>
   );
@@ -210,6 +216,8 @@ export default function ViewCampaign() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // alignItems: "center",
+    // justifyContent: "center"
   },
   itemStyle: {
     width,
@@ -219,7 +227,7 @@ const styles = StyleSheet.create({
   },
   imageStyle: {
     width: width * 0.75,
-    height: width * 0.75,
+    height: width * 0.4,
     resizeMode: 'contain',
     flex: 1,
   },
@@ -244,6 +252,17 @@ const styles = StyleSheet.create({
     marginRight: 10,
     fontSize: 16,
     lineHeight: 16 * 1.5,
+    overflow: 'visible',
+  },
+  linkdescription: {
+    color: '#ccc',
+    fontWeight: '600',
+    textAlign: 'left',
+    width: width * 0.75,
+    marginRight: 10,
+    fontSize: 16,
+    lineHeight: 16 * 1.5,
+    overflow: 'visible',
   },
   logo: {
     opacity: 0.9,
