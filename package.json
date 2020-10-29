@@ -8,7 +8,8 @@
     "eject": "expo eject",
     "test": "jest --verbose",
     "lint": "eslint .",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "node": "node server/server.js"
   },
   "jest": {
     "preset": "jest-expo"

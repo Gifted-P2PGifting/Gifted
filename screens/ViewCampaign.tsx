@@ -101,7 +101,7 @@ const Item = ({ imageUri, recipientDesc, story, index, scrollX, link }) => {
   return (
     <View style={styles.itemStyle}>
       <Animated.Image
-        source={imageUri}
+        source={imageUri.uri}
         style={[
           styles.imageStyle,
           {
