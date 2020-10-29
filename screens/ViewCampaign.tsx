@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Dimensions, Animated } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Animated,
+  Linking,
+} from 'react-native';
 import data from '../Data/feed-data';
 
 const { width, height } = Dimensions.get('window');
@@ -15,7 +22,7 @@ const Circle = ({ scrollX }) => {
     <View
       style={{ ...StyleSheet.absoluteFillObject, ...styles.circleContainer }}
     >
-      {data.map(({ color, key }, index) => {
+      {data.map(({ key }, index) => {
         // set key to ID of item later when connecting with data
         const inputRange = [
           (index - 0.55) * width,
@@ -36,7 +43,6 @@ const Circle = ({ scrollX }) => {
             key={key}
             style={{
               ...styles.circle,
-              backgroundColor: color,
               opacity,
               transform: [{ scale }],
             }}
@@ -56,10 +62,10 @@ const Ticker = ({ scrollX }) => {
   return (
     <View style={styles.tickerContainer}>
       <Animated.View style={{ transform: [{ translateY }] }}>
-        {data.map(({ type, key }) => {
+        {data.map(({ familyName, key }) => {
           return (
             <Text key={key} style={styles.tickerText}>
-              {type}
+              {familyName}
             </Text>
           );
         })}
@@ -67,8 +73,8 @@ const Ticker = ({ scrollX }) => {
     </View>
   );
 };
-
-const Item = ({ imageUri, heading, description, index, scrollX }) => {
+// add button to allow user to go to amazon wishlist
+const Item = ({ imageUri, recipientDesc, story, index, scrollX, link }) => {
   const inputRange = [(index - 1) * width, index * width, (index + 1) * width];
   const inputRangeOpacity = [
     (index - 0.3) * width,
@@ -96,10 +102,6 @@ const Item = ({ imageUri, heading, description, index, scrollX }) => {
     <View style={styles.itemStyle}>
       <Animated.Image
         source={imageUri}
-        // style={{
-        //   ...styles.imageStyle,
-        //   transform: [{ scale }],
-        // }}
         style={[
           styles.imageStyle,
           {
@@ -109,11 +111,6 @@ const Item = ({ imageUri, heading, description, index, scrollX }) => {
       />
       <View style={styles.textContainer}>
         <Animated.Text
-          // style={{
-          //   ...styles.heading,
-          //   opacity,
-          //   transform: [{ translateX: translateXHeading }],
-          // }}
           style={[
             styles.heading,
             {
@@ -122,18 +119,9 @@ const Item = ({ imageUri, heading, description, index, scrollX }) => {
             },
           ]}
         >
-          {heading}
+          {recipientDesc}
         </Animated.Text>
         <Animated.Text
-          // style={{
-          //   ...styles.description,
-          //   opacity,
-          //   transform: [
-          //     {
-          //       translateX: translateXDescription,
-          //     },
-          //   ],
-          // }}
           style={[
             styles.description,
             {
@@ -146,8 +134,14 @@ const Item = ({ imageUri, heading, description, index, scrollX }) => {
             },
           ]}
         >
-          {description}
+          {story}
         </Animated.Text>
+        <Text
+          style={{ color: 'blue' }}
+          onPress={() => Linking.openURL(`${link}`)}
+        >
+          Click here to donate gift!
+        </Text>
       </View>
     </View>
   );
@@ -175,8 +169,6 @@ const Pagination = ({ scrollX }) => {
             <View
               style={{
                 ...styles.paginationDot,
-
-                backgroundColor: item.color,
               }}
             />
           </View>
@@ -197,6 +189,7 @@ export default function ViewCampaign() {
         keyExtractor={(item) => item.key}
         data={data}
         renderItem={({ item, index }) => (
+          // eslint-disable-next-line react/jsx-props-no-spreading
           <Item {...item} index={index} scrollX={scrollX} />
         )}
         pagingEnabled
