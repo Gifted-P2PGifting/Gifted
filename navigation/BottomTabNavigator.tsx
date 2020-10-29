@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
@@ -22,16 +22,6 @@ import {
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
-function TabBarIcon({ name, color }: { name: string; color: string }) {
-  return (
-    <Ionicons
-      size={30}
-      style={{ marginBottom: -3 }}
-      color={color}
-      name={name}
-    />
-  );
-}
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
@@ -43,17 +33,32 @@ function HomeTabNavigator() {
       <HomeTabStack.Screen
         name="HomeScreen"
         component={HomeScreen}
-        options={{ headerTitle: 'Home' }}
+        options={{
+          headerTitle: 'Home',
+          headerRight: () => (
+            <AntDesign name="gift" size={35} style={{ marginRight: 10 }} />
+          ),
+        }}
       />
       <HomeTabStack.Screen
         name="HistoryScreen"
         component={HistoryScreen}
-        options={{ headerTitle: 'History' }}
+        options={{
+          headerTitle: 'History',
+          headerRight: () => (
+            <AntDesign name="gift" size={35} style={{ marginRight: 10 }} />
+          ),
+        }}
       />
       <HomeTabStack.Screen
         name="SettingsScreen"
         component={SettingsScreen}
-        options={{ headerTitle: 'Settings' }}
+        options={{
+          headerTitle: 'Settings',
+          headerRight: () => (
+            <AntDesign name="gift" size={35} style={{ marginRight: 10 }} />
+          ),
+        }}
       />
     </HomeTabStack.Navigator>
   );
@@ -67,17 +72,32 @@ function RequestTabNavigator() {
       <RequestTabStack.Screen
         name="RequestScreen"
         component={RequestScreen}
-        options={{ headerTitle: 'Request' }}
+        options={{
+          headerTitle: 'Request',
+          headerRight: () => (
+            <AntDesign name="gift" size={35} style={{ marginRight: 10 }} />
+          ),
+        }}
       />
       <RequestTabStack.Screen
         name="CampaignScreen"
         component={CampaignScreen}
-        options={{ headerTitle: 'Campaign' }}
+        options={{
+          headerTitle: 'Campaign',
+          headerRight: () => (
+            <AntDesign name="gift" size={35} style={{ marginRight: 10 }} />
+          ),
+        }}
       />
       <RequestTabStack.Screen
         name="ItemScreen"
         component={ItemScreen}
-        options={{ headerTitle: 'Item' }}
+        options={{
+          headerTitle: 'Item',
+          headerRight: () => (
+            <AntDesign name="gift" size={35} style={{ marginRight: 10 }} />
+          ),
+        }}
       />
     </RequestTabStack.Navigator>
   );
@@ -91,7 +111,12 @@ function ViewCampaignNavigator() {
       <ViewCampaignStack.Screen
         name="ViewCampaign"
         component={ViewCampaign}
-        options={{ headerTitle: 'View' }}
+        options={{
+          headerTitle: 'View',
+          headerRight: () => (
+            <AntDesign name="gift" size={35} style={{ marginRight: 10 }} />
+          ),
+        }}
       />
     </ViewCampaignStack.Navigator>
   );
@@ -112,7 +137,12 @@ export default function BottomTabNavigator() {
         component={HomeTabNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="ios-code" color={color} />
+            <AntDesign
+              name="home"
+              color={color}
+              size={30}
+              style={{ marginBottom: -3 }}
+            />
           ),
         }}
       />
@@ -121,7 +151,12 @@ export default function BottomTabNavigator() {
         component={RequestTabNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="ios-code" color={color} />
+            <AntDesign
+              name="gift"
+              color={color}
+              size={30}
+              style={{ marginBottom: -3 }}
+            />
           ),
         }}
       />
@@ -130,7 +165,12 @@ export default function BottomTabNavigator() {
         component={ViewCampaignNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="ios-code" color={color} />
+            <AntDesign
+              name="eye"
+              color={color}
+              size={30}
+              style={{ marginBottom: -3 }}
+            />
           ),
         }}
       />
