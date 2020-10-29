@@ -55,38 +55,36 @@ export default [
     key: '1',
   },
   {
-    familyName: 'Shumaker',
-    recipientDesc: 'Staven, age 5',
+    familyName: 'Michel',
+    recipientDesc: 'Em, age 5',
     imageUri: {
       uri:
-        'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/portrait-of-young-sad-girl-leblond-catherine.jpg',
+        'https://cdn.pixabay.com/photo/2015/06/22/08/40/child-817373_960_720.jpg',
     },
     story:
-      'Raven loves birds and wants to learn more about them. Raven would love a birdwatching kit.',
+      'Em loves dogs and wants to learn more about them. Em would love "All Dogs Go to Heaven".',
     link: 'https://www.amazon.com/hz/wishlist/ls/2AVG4VTPCN6P5?ref_=wl_share',
     key: '2',
   },
   {
-    familyName: 'Shumaker',
-    recipientDesc: 'Craven, age 7',
+    familyName: 'Frakes',
+    recipientDesc: 'Steve, age 2',
     imageUri: {
       uri:
-        'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/portrait-of-young-sad-girl-leblond-catherine.jpg',
+        'https://cdn.pixabay.com/photo/2014/04/05/13/05/portrait-317041_960_720.jpg',
     },
-    story:
-      'Raven loves birds and wants to learn more about them. Raven would love a birdwatching kit.',
+    story: 'Steves loves potatoes. Steve would love a vegetable peeler.',
     link: 'https://www.amazon.com/hz/wishlist/ls/2AVG4VTPCN6P5?ref_=wl_share',
     key: '3',
   },
   {
-    familyName: 'Shumaker',
-    recipientDesc: 'Javen, age 4',
+    familyName: 'Chi',
+    recipientDesc: 'Lizzy, age 4',
     imageUri: {
       uri:
-        'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/portrait-of-young-sad-girl-leblond-catherine.jpg',
+        'https://cdn.pixabay.com/photo/2016/04/06/13/32/sleeping-1311784_960_720.jpg',
     },
-    story:
-      'Raven loves birds and wants to learn more about them. Raven would love a birdwatching kit.',
+    story: 'Lizzy loves crayons. Lizzy would love a big box of colorful wax.',
     link: 'https://www.amazon.com/hz/wishlist/ls/2AVG4VTPCN6P5?ref_=wl_share',
     key: '4',
   },
