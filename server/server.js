@@ -7,6 +7,7 @@ const cors = require('cors');
 // middleware
 const userController = require('./controllers/userController.js');
 const authController = require('./controllers/authController.js');
+const campaignController = require('./controllers/campaignController.js');
 
 const PORT = 3000;
 const app = express();
@@ -15,6 +16,7 @@ const app = express();
 app.use(cors());
 // parse urlencoded and json bodies
 app.use(express.json());
+console.log('in server');
 
 // create new user in database on sign-up
 app.post(
@@ -37,8 +39,12 @@ app.post('/login', authController.verifyUser, (req, res) => {
   return res.status(200).json({ user: res.locals.user });
 });
 
-app.post('/addRequest', (req, res) => {
-  console.log(req.body);
+app.post('/campaign', campaignController.createCampaign, (req, res) => {
+  return res.status(200).json({ campaign: res.locals.campaign });
+});
+
+app.get('/campaign', campaignController.getFeed, (req, res) => {
+  return res.status(200).json({ feed: res.locals.feed });
 });
 
 // catch all error handler
