@@ -13,9 +13,8 @@ export function useThemeColor(
 
   if (colorFromProps) {
     return colorFromProps;
-  } 
-    return Colors[theme][colorName];
-  
+  }
+  return Colors[theme][colorName];
 }
 
 type ThemeProps = {

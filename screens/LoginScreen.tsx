@@ -58,12 +58,14 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
         darkColor="rgba(255,255,255,0.1)"
       />
       <TextInput
+        value={username}
         style={styles.inputView}
         placeholder="Username"
         placeholderTextColor="#eeeeee"
         onChangeText={(text) => setUsername(text)}
       />
       <TextInput
+        value={password}
         style={styles.inputView}
         secureTextEntry
         placeholder="Password"
@@ -73,7 +75,14 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
       <TouchableOpacity
         style={{ ...styles.loginBtn, width: windowWidth - 120 }}
       >
-        <Text style={styles.title} onPress={() => logIn(username, password)}>
+        <Text
+          style={styles.title}
+          onPress={() => {
+            logIn(username, password);
+            setUsername('');
+            setPassword('');
+          }}
+        >
           Login
         </Text>
       </TouchableOpacity>
