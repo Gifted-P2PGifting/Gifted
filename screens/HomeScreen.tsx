@@ -57,7 +57,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
       <TouchableOpacity style={styles.btn}>
         <Text
           style={styles.title}
-          onPress={() => navigation.navigate('HistoryScreen')}
+          onPress={() => navigation.navigate('SettingsScreen')}
         >
           Settings
         </Text>
