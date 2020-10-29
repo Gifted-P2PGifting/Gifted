@@ -8,7 +8,7 @@ import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import FeedScreen from '../screens/FeedScreen';
+import RequestScreen from '../screens/RequestScreen';
 import CampaignScreen from '../screens/CampaignScreen';
 import ItemScreen from '../screens/ItemScreen';
 import ViewCampaign from '../screens/ViewCampaign';
@@ -16,7 +16,7 @@ import ViewCampaign from '../screens/ViewCampaign';
 import {
   BottomTabParamList,
   HomeTabParamList,
-  FeedTabParamList,
+  RequestTabParamList,
   ViewCampaignParamList,
 } from '../types';
 
@@ -59,27 +59,27 @@ function HomeTabNavigator() {
   );
 }
 
-const FeedTabStack = createStackNavigator<FeedTabParamList>();
+const RequestTabStack = createStackNavigator<RequestTabParamList>();
 
-function FeedTabNavigator() {
+function RequestTabNavigator() {
   return (
-    <FeedTabStack.Navigator>
-      <FeedTabStack.Screen
-        name="FeedScreen"
-        component={FeedScreen}
-        options={{ headerTitle: 'Feed' }}
+    <RequestTabStack.Navigator>
+      <RequestTabStack.Screen
+        name="RequestScreen"
+        component={RequestScreen}
+        options={{ headerTitle: 'Request' }}
       />
-      <FeedTabStack.Screen
+      <RequestTabStack.Screen
         name="CampaignScreen"
         component={CampaignScreen}
         options={{ headerTitle: 'Campaign' }}
       />
-      <FeedTabStack.Screen
+      <RequestTabStack.Screen
         name="ItemScreen"
         component={ItemScreen}
         options={{ headerTitle: 'Item' }}
       />
-    </FeedTabStack.Navigator>
+    </RequestTabStack.Navigator>
   );
 }
 
@@ -117,8 +117,8 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Feed"
-        component={FeedTabNavigator}
+        name="Request"
+        component={RequestTabNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="ios-code" color={color} />

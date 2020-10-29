@@ -6,6 +6,7 @@ const authController = {};
 
 // check Username
 authController.checkUsername = async (req, res, next) => {
+  console.log('request body', req.body);
   // get username from request body
   const { username } = req.body;
 
@@ -67,7 +68,6 @@ authController.encryptPassword = async (req, res, next) => {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
     // add hashed password to res.locals
     res.locals.hashedPassword = hashedPassword;
-    console.log(hashedPassword);
 
     // move on to next middleware
     return next();
@@ -79,6 +79,7 @@ authController.encryptPassword = async (req, res, next) => {
 // verify username exists and password corresponds
 authController.verifyUser = async (req, res, next) => {
   const { username, password } = req.body;
+  console.log('entered verify', req.body);
 
   try {
     // set value array and query string
