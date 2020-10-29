@@ -33,6 +33,7 @@ module.exports = {
       },
     ],
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts', '.js'] }],
+    'object-shorthand': 'off',
     'react/no-unescaped-entities': 'warn',
     'react/jsx-props-no-spreading': 'warn',
     'react/prop-types': 'off',
