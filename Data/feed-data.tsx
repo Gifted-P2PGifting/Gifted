@@ -1,3 +1,7 @@
+/* add vertical scrolling and limit picture size
+    fetch request to back end
+*/
+
 /* export default [
     {
         type: 'Stuffed Doggy',
