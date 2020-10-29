@@ -4,8 +4,9 @@ import {
   DarkTheme,
 } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { ColorSchemeName } from 'react-native';
+import axios from 'axios';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
@@ -22,13 +23,29 @@ export default function Navigation({
   colorScheme: ColorSchemeName;
 }) {
   const [token, setToken] = useState('');
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    console.log('User:', user);
+  }, [user]);
 
   const authContext = useMemo(() => {
     return {
-      logIn: (username: string, password: string) => {
-        console.log(username, password);
+      logIn: async (username: string, password: string) => {
+        // console.log(username, password);
+        try {
+          const response = await axios.post('http://localhost:3000/login', {
+            username,
+            password,
+          });
+          console.log('response object', response);
 
-        setToken('pass');
+          if (response.status === 200) {
+            setUser(response.data.user);
+            setToken('pass');
+          }
+        } catch (err) {
+          throw new Error(err);
+        }
       },
       signUp: () => {
         setToken('new');

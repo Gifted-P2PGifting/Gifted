@@ -42,7 +42,7 @@ app.use((req, res) => res.sendStatus(404));
 
 // Gloval error handler
 app.use('*', (err, req, res, next) => {
-  res.status(404).send(err);
+  res.status(500).send(err.log);
 });
 
 app.listen(PORT, () => {
