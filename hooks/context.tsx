@@ -4,8 +4,8 @@ const AuthContext = createContext({
   logIn: (a: string, b: string) => {
     console.log(a, b);
   },
-  signUp: () => {
-    console.log(null);
+  signUp: (a: string, b: string, c: string, d: string) => {
+    console.log(a, b, c, d);
   },
   signOut: () => {
     console.log(null);

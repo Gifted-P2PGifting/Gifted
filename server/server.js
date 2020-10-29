@@ -42,7 +42,12 @@ app.use((req, res) => res.sendStatus(404));
 
 // Gloval error handler
 app.use('*', (err, req, res, next) => {
-  res.status(500).send(err.log);
+  const defaultErr = {
+    status: 500,
+    message: 'error in middleware',
+    ...err,
+  };
+  res.status(defaultErr.status).send(defaultErr.message);
 });
 
 app.listen(PORT, () => {

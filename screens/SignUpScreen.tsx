@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, useWindowDimensions } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { Text, View } from '../components/Themed';
@@ -42,18 +42,12 @@ const styles = StyleSheet.create({
 });
 
 const SignUpScreen = () => {
-  const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [, setConfirmPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const { signUp } = useContext(AuthContext);
   const windowWidth = useWindowDimensions().width;
-
-  useEffect(() => {
-    console.log('username: ', username);
-    console.log('password: ', password);
-    console.log('Name: ', firstName);
-  }, [username, password, firstName]);
 
   return (
     <View style={styles.container}>
@@ -64,18 +58,21 @@ const SignUpScreen = () => {
         darkColor="rgba(255,255,255,0.1)"
       />
       <TextInput
+        value={email}
         style={styles.inputView}
-        placeholder="First Name"
+        placeholder="Email"
         placeholderTextColor="#eeeeee"
-        onChangeText={(text) => setFirstName(text)}
+        onChangeText={(text) => setEmail(text)}
       />
       <TextInput
+        value={username}
         style={styles.inputView}
         placeholder="Username"
         placeholderTextColor="#eeeeee"
         onChangeText={(text) => setUsername(text)}
       />
       <TextInput
+        value={password}
         style={styles.inputView}
         secureTextEntry
         placeholder="Password"
@@ -83,6 +80,7 @@ const SignUpScreen = () => {
         onChangeText={(text) => setPassword(text)}
       />
       <TextInput
+        value={confirmPassword}
         style={styles.inputView}
         secureTextEntry
         placeholder="Confirm Password"
@@ -92,7 +90,16 @@ const SignUpScreen = () => {
       <TouchableOpacity
         style={{ ...styles.loginBtn, width: windowWidth - 120 }}
       >
-        <Text style={styles.title} onPress={() => signUp()}>
+        <Text
+          style={styles.title}
+          onPress={() => {
+            signUp(email, username, password, confirmPassword);
+            setEmail('');
+            setUsername('');
+            setPassword('');
+            setConfirmPassword('');
+          }}
+        >
           Sign Up
         </Text>
       </TouchableOpacity>

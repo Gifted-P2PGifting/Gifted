@@ -44,11 +44,34 @@ export default function Navigation({
             setToken('pass');
           }
         } catch (err) {
-          throw new Error(err);
+          console.log(err);
         }
       },
-      signUp: () => {
-        setToken('new');
+      signUp: async (
+        email: string,
+        username: string,
+        password: string,
+        confirm: string
+      ) => {
+        if (password !== confirm) {
+          console.log('passwords do not match');
+          return;
+        }
+        try {
+          const response = await axios.post('http://localhost:3000/signup', {
+            username,
+            email,
+            password,
+          });
+          console.log('response object', response);
+
+          if (response.status === 200) {
+            setUser(response.data.user);
+            setToken('pass');
+          }
+        } catch (err) {
+          console.log(err);
+        }
       },
       signOut: () => {
         setToken('');

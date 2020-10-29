@@ -6,6 +6,7 @@ const authController = {};
 
 // check Username
 authController.checkUsername = async (req, res, next) => {
+  console.log('request body', req.body);
   // get username from request body
   const { username } = req.body;
 
