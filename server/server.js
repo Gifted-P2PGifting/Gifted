@@ -37,6 +37,10 @@ app.post('/login', authController.verifyUser, (req, res) => {
   return res.status(200).json({ user: res.locals.user });
 });
 
+app.post('/addRequest', (req, res) => {
+  console.log(req.body);
+});
+
 // catch all error handler
 app.use((req, res) => res.sendStatus(404));
 
