@@ -152,7 +152,7 @@ export default function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ color }) => (
             <AntDesign
-              name="gift"
+              name="form"
               color={color}
               size={30}
               style={{ marginBottom: -3 }}
