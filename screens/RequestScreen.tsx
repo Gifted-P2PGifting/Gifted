@@ -51,7 +51,7 @@ export default function RequestScreen() {
   const [story, setStory] = useState('');
   const [link, setLink] = useState('');
 
-  const reqeuestData = {
+  const requestData = {
     familyName: familyName,
     recipientDesc: recipientDesc,
     imageUri: image,
@@ -62,30 +62,35 @@ export default function RequestScreen() {
   return (
     <View style={styles.container}>
       <TextInput
+        value={familyName}
         style={styles.inputView}
         placeholder="Family Name"
         placeholderTextColor="#eeeeee"
         onChangeText={(text) => setFamilyName(text)}
       />
       <TextInput
+        value={recipientDesc}
         style={styles.inputView}
         placeholder="Recipient Description"
         placeholderTextColor="#eeeeee"
         onChangeText={(text) => setRecipientDesc(text)}
       />
       <TextInput
+        value={image}
         style={styles.inputView}
         placeholder="Image"
         placeholderTextColor="#eeeeee"
         onChangeText={(text) => setImage(text)}
       />
       <TextInput
+        value={story}
         style={styles.inputView}
         placeholder="Story"
         placeholderTextColor="#eeeeee"
         onChangeText={(text) => setStory(text)}
       />
       <TextInput
+        value={link}
         style={styles.inputView}
         placeholder="Wish List Link"
         placeholderTextColor="#eeeeee"
@@ -102,10 +107,24 @@ export default function RequestScreen() {
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify(reqeuestData),
+              body: JSON.stringify(requestData),
             })
-              .then(() => console.log('hi'))
-              .catch((err) => console.log(err));
+              .then(() => {
+                console.log('hi');
+                setFamilyName('');
+                setRecipientDesc('');
+                setImage('');
+                setStory('');
+                setLink('');
+              })
+              .catch((err) => {
+                console.log('Error', err);
+                setFamilyName('');
+                setRecipientDesc('');
+                setImage('');
+                setStory('');
+                setLink('');
+              });
           }}
         >
           Submit Request
