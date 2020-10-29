@@ -4,12 +4,14 @@ import {
   DarkTheme,
 } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import * as React from 'react';
+import React, { useState, useMemo } from 'react';
 import { ColorSchemeName } from 'react-native';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
+import AuthNavigator from './AuthNavigator';
+import AuthContext from '../hooks/context';
 import LinkingConfiguration from './LinkingConfiguration';
 
 // If you are not familiar with React Navigation, we recommend going through the
@@ -19,13 +21,33 @@ export default function Navigation({
 }: {
   colorScheme: ColorSchemeName;
 }) {
+  const [token, setToken] = useState('');
+
+  const authContext = useMemo(() => {
+    return {
+      logIn: (username: string, password: string) => {
+        console.log(username, password);
+
+        setToken('pass');
+      },
+      signUp: () => {
+        setToken('new');
+      },
+      signOut: () => {
+        setToken('');
+      },
+    };
+  }, []);
+
   return (
-    <NavigationContainer
-      linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-    >
-      <RootNavigator />
-    </NavigationContainer>
+    <AuthContext.Provider value={authContext}>
+      <NavigationContainer
+        linking={LinkingConfiguration}
+        theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+      >
+        {token ? <RootNavigator /> : <AuthNavigator />}
+      </NavigationContainer>
+    </AuthContext.Provider>
   );
 }
 

@@ -25,3 +25,7 @@ export type ViewCampaignParamList = {
   ViewCampaignScreen: undefined;
   ViewCampaign: undefined;
 };
+
+export type LoginScreenParamList = {
+  LoginScreen: undefined;
+};
