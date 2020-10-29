@@ -102,7 +102,12 @@ export default function RequestScreen() {
         <Text
           style={styles.title}
           onPress={() => {
-            fetch('http://localhost:3000/addRequest', {
+            setFamilyName('');
+            setRecipientDesc('');
+            setImage('');
+            setStory('');
+            setLink('');
+            fetch('http://localhost:3000/campaign', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -111,19 +116,9 @@ export default function RequestScreen() {
             })
               .then(() => {
                 console.log('hi');
-                setFamilyName('');
-                setRecipientDesc('');
-                setImage('');
-                setStory('');
-                setLink('');
               })
               .catch((err) => {
                 console.log('Error', err);
-                setFamilyName('');
-                setRecipientDesc('');
-                setImage('');
-                setStory('');
-                setLink('');
               });
           }}
         >
