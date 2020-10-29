@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, useWindowDimensions } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import { StyleSheet } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { Text, View } from '../components/Themed';
 import AuthContext from '../hooks/context';
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#458b74',
     borderRadius: 10,
     height: 40,
+    width: 150,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 10,
@@ -47,10 +49,10 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { logIn } = useContext(AuthContext);
-  const windowWidth = useWindowDimensions().width;
 
   return (
     <View style={styles.container}>
+      <AntDesign name="gift" size={50} />
       <Text style={styles.title}>Log In</Text>
       <View
         style={styles.separator}
@@ -72,9 +74,7 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
         placeholderTextColor="#eeeeee"
         onChangeText={(text) => setPassword(text)}
       />
-      <TouchableOpacity
-        style={{ ...styles.loginBtn, width: windowWidth - 120 }}
-      >
+      <TouchableOpacity style={styles.loginBtn}>
         <Text
           style={styles.title}
           onPress={() => {
