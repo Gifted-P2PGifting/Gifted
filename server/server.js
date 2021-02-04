@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 // require modules
 const express = require('express');
 const cors = require('cors');
@@ -50,7 +49,7 @@ app.get('/campaign', campaignController.getFeed, (req, res) => {
 // catch all error handler
 app.use((req, res) => res.sendStatus(404));
 
-// Gloval error handler
+// Global error handler
 app.use('*', (err, req, res, next) => {
   const defaultErr = {
     status: 500,
